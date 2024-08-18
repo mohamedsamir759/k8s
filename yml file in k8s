@@ -1,0 +1,35 @@
+kubectl run lab3 --image=httpd --restart=Never -o yaml --dry-run=client (he will show the content in yaml file)
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lab3
+spec:
+  containers:
+  - name: 
+    image: httpd
+    args:
+    - sleep
+    - "1000"
+
+
+kubectl run lab4 --image=httpd --restart=Never -o yaml --dry-run -- /bin/sh -c 'echo hello;sleep 3600'
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: lab4
+  name: lab4
+spec:
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - echo hello;sleep 3600
+    image: busybox
+    name: busybox
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
