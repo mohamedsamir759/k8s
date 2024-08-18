@@ -1,0 +1,22 @@
+mkdir kubernetes
+cd kubernetes/
+kubectl run lab1 --image httpd
+kubectl create deployment senior --image httpd
+kubectl delete lab1
+kubectl get pods
+kubectl get ns  (namespace)
+kubectl create ns prod
+kubectl create ns dev
+minikube status
+minikube start --nodes=2 --driver=docker  (1 master and other worker node)
+
+kubectl run lab1  --image httpd -p 7070:80 --namespace prod
+
+kubectl run lab1  --image httpd -p 7070:80 --namespace dev (Namespace its func:Duplication of pods)
+   
+kubectl run lab1  --image httpd -p 7070:80 --namespace dev -o -yaml --dry-run=client
+
+
+kubectl create deployment test --image httpd --replicas 3 --port 80 -o yaml --dry-run=client (automatic and replicaset deployment test and put under name namespace: prod)
+kubectl apply -f .
+kubectl get pods -n prod
