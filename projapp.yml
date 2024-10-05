@@ -20,6 +20,6 @@ spec:
       containers:
       - image: mohamedsamir759/httpd
         name: projapp
-      - containerport: "8888"
+      - containerport: "8080"
 
          
